@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CodeCraft Learning Platform - Modern Minimalist Design System */
+
+@layer base {
+  :root {
+    /* Core Colors - Soft, minimalist palette */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 220 70% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 45%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 220 70% 50%;
+
+    --radius: 1rem;
+
+    /* Programming Language Colors - Soft variants */
+    --python: 210 30% 45%;
+    --javascript: 45 60% 55%;
+    --java: 15 50% 50%;
+    --cpp: 210 40% 45%;
+    --react: 193 60% 60%;
+    --go: 174 40% 35%;
+    --rust: 17 60% 60%;
+    --swift: 28 60% 55%;
+    --kotlin: 258 50% 55%;
+    --php: 225 50% 60%;
+
+    /* Gradients - Soft and subtle */
+    --gradient-hero: linear-gradient(135deg, hsl(220 70% 95%), hsl(220 70% 98%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(240 5% 98%));
+    --gradient-primary: linear-gradient(135deg, hsl(220 70% 50%), hsl(220 70% 55%));
+
+    /* Shadows - Soft and subtle */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1), 0 8px 10px -6px hsl(0 0% 0% / 0.1);
+
+    /* Animations - Smooth and elegant */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Sidebar colors for consistency */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 10% 3.9%;
+    --sidebar-primary: 220 70% 50%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 240 5.9% 90%;
+    --sidebar-ring: 220 70% 50%;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-jakarta antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  code, pre {
+    @apply font-mono text-sm;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent;
+  }
+
+  .soft-card {
+    @apply bg-card border border-border/50 shadow-md backdrop-blur-sm;
+    border-radius: var(--radius);
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .hover-scale {
+    @apply transition-all duration-300 hover:scale-[1.02];
+  }
+
+  .soft-shadow {
+    box-shadow: var(--shadow-md);
+  }
+
+  .soft-glow {
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.1), 0 2px 4px hsl(var(--primary) / 0.1);
+  }
+
+  .smooth-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+@layer utilities {
+  /* Scroll reveal animations used across pages */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(6px);
+    transition:
+      opacity 600ms cubic-bezier(0.2, 0.65, 0.2, 1),
+      transform 600ms cubic-bezier(0.2, 0.65, 0.2, 1),
+      filter 600ms cubic-bezier(0.2, 0.65, 0.2, 1);
+    will-change: opacity, transform, filter;
+  }
+
+  .reveal-in {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+    filter: blur(4px);
+    transition:
+      opacity 600ms cubic-bezier(0.2, 0.65, 0.2, 1),
+      transform 600ms cubic-bezier(0.2, 0.65, 0.2, 1),
+      filter 600ms cubic-bezier(0.2, 0.65, 0.2, 1);
+    will-change: opacity, transform, filter;
+  }
+
+  .is-visible.reveal,
+  .is-visible.reveal-in {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+
+  /* Simple staged delays */
+  .reveal-delay-1 { transition-delay: 100ms; }
+  .reveal-delay-2 { transition-delay: 200ms; }
+  .reveal-delay-3 { transition-delay: 300ms; }
+
+  /* Respect users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-in,
+    .is-visible.reveal,
+    .is-visible.reveal-in {
+      transition: none !important;
+      transform: none !important;
+      filter: none !important;
+      opacity: 1 !important;
+    }
+  }
+}
